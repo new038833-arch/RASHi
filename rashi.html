@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>راشد علی - ایپ</title>
+  <style>
+    body {
+      font-family: "Noto Nastaliq Urdu", Tahoma, Arial;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .name {
+      font-size: 20px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      resize: none;
+    }
+    .buttons {
+      margin: 15px 0;
+    }
+    .buttons button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .play { background: #4CAF50; color: white; }
+    .pause { background: #FF9800; color: white; }
+    .download { background: #2196F3; color: white; }
+    .share { background: #9C27B0; color: white; }
+    .save { background: #607D8B; color: white; }
+    .options {
+      margin: 10px 0;
+      text-align: right;
+    }
+    label {
+      display: block;
+      margin: 8px 0 3px;
+      font-size: 14px;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    .image-section, .video-section {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- پروفائل تصویر اپلوڈ -->
+    <input type="file" id="uploadPic" accept="image/*" style="display:none">
+    <img src="https://via.placeholder.com/100" id="profileImg" class="profile-pic" onclick="document.getElementById('uploadPic').click()">
+    
+    <!-- نام -->
+    <div class="name">راشد علی</div>
+    
+    <!-- اردو متن باکس -->
+    <textarea placeholder="یہاں اردو متن لکھیں..."></textarea>
+    
+    <!-- پلے، پاز، ڈاؤنلوڈ -->
+    <div class="buttons">
+      <button class="play">▶ پلے</button>
+      <button class="pause">⏸ پاز</button>
+      <button class="download">⬇ ڈاؤن لوڈ</button>
+    </div>
+    
+    <!-- آواز کی ترجیحات -->
+    <div class="options">
+      <label>رفتار:</label>
+      <input type="range" min="0.5" max="2" step="0.1">
+      
+      <label>پچ (Pitch):</label>
+      <input type="range" min="0" max="2" step="0.1">
+    </div>
+    
+    <!-- شیئر اور محفوظ -->
+    <div class="buttons">
+      <button class="share">📤 شیئر</button>
+      <button class="save">💾 محفوظ کریں</button>
+    </div>
+    
+    <!-- امیج کریشن -->
+    <div class="image-section">
+      <h3>امیج کریشن</h3>
+      <input type="text" placeholder="امیج لکھیں..." style="width:100%;padding:8px;border-radius:8px;border:1px solid #ccc">
+      <p>یا</p>
+      <input type="file" accept="image/*">
+    </div>
+    
+    <!-- ویڈیو پروسیسنگ -->
+    <div class="video-section">
+      <button style="background:#E91E63;color:white;padding:12px 20px;border:none;border-radius:10px;cursor:pointer;">🎬 پروسیس کریں اور ویڈیو میں تبدیل کریں</button>
+    </div>
+  </div>
+
+  <script>
+    // پروفائل تصویر بدلنے کا فنکشن
+    document.getElementById("uploadPic").addEventListener("change", function(event){
+      let reader = new FileReader();
+      reader.onload = function(e){
+        document.getElementById("profileImg").src = e.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    });
+  </script>
+</body>
+</html>
